@@ -1,0 +1,108 @@
+
+This readme is intended for the Java Engine.
+
+Copyright 2016 The MathWorks, Inc.
+  
+
+                               README
+
+The files in this directory are:
+1. EngineGUIDemo
+2. EngineConsoleDemo  
+
+The EngineGUIDemo uses a Swing UI to take an input number and calculate the factorial of the given number.
+
+The EngineConsoleDemo creates a matrix, finds the elements less than 5 and squares the returned elements. 
+
+You can use the following commands to build and test the examples:
+
+In the below example, replace <matlabroot> with the value returned by the "matlabroot" command in MATLAB.
+On Windows:
+-----------
+Compile:
+javac -classpath <matlabroot>\extern\engines\java\jar\engine.jar EngineConsoleDemo.java
+javac -classpath <matlabroot>\extern\engines\java\jar\engine.jar EngineGUIDemo.java
+
+To run the example applications, you need to add the following path to the PATH variable:
+<matlabroot>\bin\win64
+
+Change path each time you run the application
+To set the run-time library path from the Windows command prompt, type the following command. Set the path every time you open the Windows Command Processor.
+
+set PATH=<matlabroot>\bin\win64;%PATH%
+
+To permanently change path
+
+Windows 10:
+In Search, search for and then select: System (Control Panel)
+Click Advanced system settings > Advanced tab.
+Click Environment Variables.
+Under System variables, select Path and click Edit.
+Modify Path by inserting <matlabroot>\bin\win64; at the beginning of the Variable value.
+Click Ok to close the dialog boxes, then close the Control Panel dialog box.
+
+Run:
+java -classpath .;<matlabroot>\extern\engines\java\jar\engine.jar EngineConsoleDemo
+java -classpath .;<matlabroot>\extern\engines\java\jar\engine.jar EngineGUIDemo
+
+On Mac:
+-----------
+Compile:
+javac -classpath <matlabroot>/extern/engines/java/jar/engine.jar EngineConsoleDemo.java
+javac -classpath <matlabroot>/extern/engines/java/jar/engine.jar EngineGUIDemo.java
+
+To run the example applications, add <matlabroot>/bin/maci64 to either the DYLD_LIBRARY_PATH variable or to the Java library search path.
+
+To add "<matlabroot>/bin/maci64" to the DYLD_LIBRARY_PATH variable:
+
+C Shell
+setenv DYLD_LIBRARY_PATH <matlabroot>/bin/maci64
+
+You can place these commands in a startup script, such as ~/.cshrc.
+
+Bourne Shell
+DYLD_LIBRARY_PATH=<matlabroot>/bin/maci64:$DYLD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH 
+
+You can place these commands in a startup script such as ~/.profile.
+
+Run:
+java -classpath .:<matlabroot>/extern/engines/java/jar/engine.jar EngineConsoleDemo
+java -classpath .:<matlabroot>/extern/engines/java/jar/engine.jar EngineGUIDemo
+
+
+Run the examples by adding "<matlabroot>/bin/maci64" to the Java library search path without setting the DYLD_LIBRARY_PATH variable:
+
+java -Djava.library.path=<matlabroot>/bin/maci64 -classpath .:<matlabroot>/extern/engines/java/jar/engine.jar EngineConsoleDemo
+java -Djava.library.path=<matlabroot>/bin/maci64 -classpath .:<matlabroot>/extern/engines/java/jar/engine.jar EngineGUIDemo
+
+On Linux:
+-----------
+Compile:
+javac -classpath <matlabroot>/extern/engines/java/jar/engine.jar EngineConsoleDemo.java
+javac -classpath <matlabroot>/extern/engines/java/jar/engine.jar EngineGUIDemo.java
+
+In order run the example applications, add the following paths to the LD_LIBRARY_PATH variable:
+<matlabroot>/sys/os/glnxa64
+<matlabroot>/bin/glnxa64
+
+C Shell
+setenv LD_LIBRARY_PATH <matlabroot>/bin/glnxa64:<matlabroot>/sys/os/glnxa64
+
+You can place these commands in a startup script, such as ~/.cshrc.
+
+Bourne Shell
+LD_LIBRARY_PATH=<matlabroot>/bin/glnxa64:<matlabroot>/sys/os/glnxa64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH 
+
+You can place these commands in a startup script such as ~/.profile.
+
+Run:
+java -classpath .:<matlabroot>/extern/engines/java/jar/engine.jar EngineConsoleDemo
+java -classpath .:<matlabroot>/extern/engines/java/jar/engine.jar EngineGUIDemo
+
+
+If a compatible GCC library is in the search path, you can add "<matlabroot>/bin/glnxa64" to the Java library search path and run the examples without setting the LD_LIBRARY_PATH variable (for MATLAB version R2016b, the supported GCC version is 4.9): 
+
+java -Djava.library.path=<matlabroot>/bin/glnxa64 -classpath .:<matlabroot>/extern/engines/java/jar/engine.jar EngineConsoleDemo
+java -Djava.library.path=<matlabroot>/bin/glnxa64 -classpath .:<matlabroot>/extern/engines/java/jar/engine.jar EngineGUIDemo

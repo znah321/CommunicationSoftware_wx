@@ -1,0 +1,73 @@
+#
+# file : Makefile (NT--Microsoft )
+#
+#  Example of a stand-alone makefile for compiler-generated M files
+#
+#  Copyright 1999-2006 The MathWorks, Inc.
+#  $Revision.4 $  
+#
+
+#
+# You can invoke this Makefile using 
+#  nmake /f Makefile.nmake MATLABROOT=[directory where MATLAB is installed]
+#
+# If you do not want to specify the MATLABROOT at the gmake command line 
+# every single time, you can define it by uncommenting the line below
+# and assigning the correct root of MATLAB (with no trailing '/') on
+# the right hand side.
+#
+# MATLABROOT	=
+#
+
+#
+# Defaults
+#
+
+MCC=$(MATLABROOT)\bin\win32\mcc
+MBUILD=$(MATLABROOT)\bin\mbuild
+#
+
+STANDALONE_TARGETS=hello.exe flames.exe magicsquare.exe ex_loadsave.exe
+
+
+# Use the following target to build and test all the executables
+bnt_exes: build_all
+	@echo "*********** testing hello ***********"
+	hello 
+	@echo "*********** testing flames ***********"
+	flames 
+	@echo "*********** testing magicsquare 4 ***********"
+	magicsquare 4
+	@echo "*********** testing ex_loadsave ***********"
+	ex_loadsave
+
+# This target will only build all the executables
+build_all: $(STANDALONE_TARGETS)
+
+# The following are each individual targets
+
+hello.exe: hello.m 
+	$(MCC) -m hello.m
+
+flames.exe: flames.m flames.mat
+	$(MCC) -m flames.m -a flames.mat
+
+magicsquare.exe: magicsquare.m 
+	$(MCC) -m magicsquare
+
+ex_loadsave.exe:
+	$(MCC) -m ".\Data_Handling\ex_loadsave.m" -a ".\Data_Handling\user_data.mat" -a ".\Data_Handling\userdata\extra_data.mat" -a  ".\externdata\extern_data.mat" 
+
+clean: pseudotarget
+	del /f $(STANDALONE_TARGETS)
+
+reallyclean: pseudotarget 
+	del /s /q /f $(STANDALONE_TARGETS)                     	\
+		*.xml *.ctf *_mcr 	\
+		mccExcludedFIles.log \
+		output\*
+	rmdir /s /q libPkg_mcr hello_mcr flames_mcr	\
+		magicsquare_mcr \
+		output
+
+pseudotarget:

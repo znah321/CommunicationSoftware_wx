@@ -1,0 +1,180 @@
+EXAMPLE FILES FOR C AND C++ INTERFACES FOR MATLAB COMPILER SDK
+
+Copyright 1997-2018 The MathWorks, Inc.
+
+                          ************
+                          INTRODUCTION
+                          ************
+
+The code examples in this directory demonstrate how to call
+MATLAB functions via the C interface, C++ interface 
+using mwArray, or C++ interface using MATLAB Data API,
+all provided by MATLAB Compiler SDK. The directory contains several
+subdirectories, each representing a separate example.
+
+The files in a subdirectory fall into the following categories:
+
+    * Source code files:
+        * Drivers
+            * C (*.c)
+            * C++ legacy interface using mwArray (*_mwarray.cpp)
+            * C++ generic interface using MATLAB Data API (*_mda.cpp)
+        * MATLAB function files (*.m)
+        * Makefile for building the source code files into a
+        standalone application
+
+The C++11-style MATLAB Data API interface, introduced in R2018a, provides many 
+benefits over the C interface and C++ mwArray interface, including:
+
+    * increased exception safety
+    * increased performance
+    * compatibility with standard algorithms
+    * support for std::complex data
+
+Developers who are willing to write C++11 code are encouraged to use the
+MATLAB Data API interface. Several examples contain mwArray and MATLAB Data API
+drivers side by side so that you can compare them.
+
+See also "Integrate C Shared Libraries" and "Integrate C++ Shared Libraries"
+in the MATLAB Compiler SDK documentation.
+
+                       **********************
+                       INSTRUCTIONS: OVERVIEW
+                       **********************
+
+To build one or more examples, you will call gmake (which is provided 
+with MATLAB) from the command prompt. You will also need to set 
+MATLABROOT to refer to the directory where MATLAB or MATLAB Runtime 
+is installed. It should have the correct capitalization (including 
+drive letter, if any) and should not end with a slash. A 
+common value for MATLABROOT on Windows would be "C:\Program Files\MATLAB\R2019a".
+
+MATLABROOT can be set in any of three ways:
+    * passing it on the command line as an argument to gmake
+    * setting it as an environment variable
+    * uncommenting and editing the line in the makefile where MATLABROOT is set
+
+You can build all examples from this directory (extern\examples\compiler_sdk\c_cpp), 
+or you can go into a child directory (for instance, 
+extern\examples\compiler_sdk\c_cpp\matrix) and build the example there.
+If you do not have write permissions for this directory, copy it,
+with its subdirectories, to another location where you do have write
+permissions.
+
+You can build the examples with the C, legacy C++, or generic C++ interface 
+by passing the respective target name:
+    * c
+    * mwarray_cpp
+    * mda_cpp
+    
+Omitting the target name is equivalent to specifying mda_cpp.
+
+                       **********************
+                       INSTRUCTIONS: EXAMPLES
+                       **********************
+
+For simplicity, these examples:
+    * use Windows
+    * pass MATLABROOT on the command line
+    * use the MATLABROOT value "C:\Program Files\MATLAB\R2018a"
+    
+To build all MATLAB Data API C++ examples from this directory:
+
+    cd "C:\Program Files\MATLAB\R2018a\extern\examples\compilersdk\c_cpp"
+    "C:\Program Files\MATLAB\R2018a\bin\win64\gmake" "MATLABROOT=C:\Program Files\MATLAB\R2018a" mda_cpp
+    
+Alternatively, you could omit "mda_cpp", since that is the default
+target.    
+                   
+To build the C example in the matrix directory:
+
+    cd "C:\Program Files\MATLAB\R2018a\extern\examples\compilersdk\c_cpp\matrix"
+    "C:\Program Files\MATLAB\R2018a\bin\win64\gmake" "MATLABROOT=C:\Program Files\MATLAB\R2018a" c
+
+Follow any instructions written to the console during the build process.
+These instructions will tell you where to find the executable, and how 
+to set the environment variable LD_LIBRARY_PATH on Linux, or the
+environment variable DYLD_LIBRARY_PATH on Mac.
+
+The following section explains each example in brief.
+
+                  ***********************************
+                  DESCRIPTIONS OF INDIVIDUAL EXAMPLES
+                  ***********************************
+
+catcherror: Redirection of Standard Input and Output
+-------------------------------------------------------------------------------
+The files that you will use in this example are:
+
+    * One of the following three:
+        * catcherror.c, a C driver that intentionally calls a MATLAB function 
+          with a value that is outside the accepted range, so you can see how 
+          the error message is handled
+        * catcherror_mwarray.cpp, a driver that uses the C++ mwArray interface
+          to perform the same operations as catcherror.c
+        * catcherror_mda.cpp, a driver that uses the C++ MATLAB Data API 
+          interface to perform the same operations as catcherror.c
+    * realacos.m, a MATLAB function file that takes and returns a 
+      double value that must be within the range from -1.0 to 1.0 (inclusive)
+    * reveal.m, a MATLAB function file that displays a value
+
+doubleasync: Asynchronous Calls
+-------------------------------------------------------------------------------
+The files that you will use in this example are:
+
+    * doubleasync_mda.cpp, a driver that uses the C++ MATLAB Data API 
+      interface to make two separate asynchronous calls to the repeatdouble
+      function
+    * repeatdouble.m, a MATLAB function file that iteratively doubles the input
+
+matrix: Matrix Operations Using Multiple MATLAB Functions
+-------------------------------------------------------------------------------
+The files that you will use in this example are:
+
+    * One of the following three:
+        * matrix.c, a C driver that calls the three MATLAB functions listed 
+          below and prints the results.
+        * matrix_mwarray.cpp, a driver that uses the C++ mwArray interface to 
+          perform the same operations as matrix.c
+        * matrix_mda.cpp, a driver that uses the C++ MATLAB Data API interface
+          to perform the same operations as matrix.c
+    * addmatrix.m, a MATLAB function file that takes two matrices and returns 
+      their sum.
+    * multiplymatrix.m, a MATLAB function file that takes two matrices and 
+      returns their product.
+    * eigmatrix.m, a MATLAB function file that takes a matrix and returns its 
+      eigenvalues.
+
+triangle: Graphics Shared Library
+-------------------------------------------------------------------------------
+This example shows how to create a graphics-based shared library using the 
+MATLAB Compiler SDK. The xcode subdirectory is designed to allow you to use 
+XCode on the Mac to work with this library.
+
+The files that you will use in this example are:
+
+    * One of the following three:
+        * triangle.c, a C driver that calls the MATLAB SIERPINSKI function to 
+          draw a Sierpinski triangle and/or to list the points it contains
+        * triangle_mwarray.cpp, a driver that uses the C++ mwArray interface to 
+          perform the same operations as triangle.c
+        * triangle_mda.cpp, a driver that uses the C++ MATLAB Data API 
+          interface to perform the same operations as triangle.c
+    * sierpinski.m, a MATLAB function file that calls the MATLAB SIERPINSKI 
+      function
+
+varargs: Variable Number of Input and Output Arguments
+-------------------------------------------------------------------------------
+This example shows how to pass arguments to and from MATLAB functions with a
+variable number of inputs and outputs, or with no inputs or outputs, using 
+the MATLAB Compiler SDK.
+
+The files that you will use in this example are:
+
+    * varargs_mda.cpp, a driver that uses the C++ MATLAB Data API interface 
+      to call a function that takes a variable number of inputs and outputs, 
+      and another that takes neither inputs nor outputs
+    * noargs.m, a MATLAB function file that neither takes inputs nor returns 
+      outputs
+    * varargs.m, a MATLAB function file that takes a variable number of inputs
+      and returns a variable number of outputs
