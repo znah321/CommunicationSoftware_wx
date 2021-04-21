@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Orel/Desktop/CommunicationSoftware_wx/0421/main.cpp
+iostream
+-
+fstream
+-
+list
+-
+algorithm
+-
+
