@@ -1,0 +1,3 @@
+C:/Users/Orel/Desktop/CommunicationSoftware_wx/0428/cmake-build-debug/CMakeFiles/0428.dir
+C:/Users/Orel/Desktop/CommunicationSoftware_wx/0428/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Orel/Desktop/CommunicationSoftware_wx/0428/cmake-build-debug/CMakeFiles/rebuild_cache.dir

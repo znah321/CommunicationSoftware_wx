@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Orel/Desktop/CommunicationSoftware_wx/0428/main.cpp
+iostream
+-
+string
+-
+fstream
+-
+vector
+-
+algorithm
+-
+math.h
+-
+random
+-
+ctime
+-
+
