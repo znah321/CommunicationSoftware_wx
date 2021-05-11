@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Orel/Desktop/CommunicationSoftware_wx/0508/Bmp.h
+
+C:/Users/Orel/Desktop/CommunicationSoftware_wx/0508/main.cpp
+iostream
+-
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+cstring
+-
+Bmp.h
+C:/Users/Orel/Desktop/CommunicationSoftware_wx/0508/Bmp.h
+
