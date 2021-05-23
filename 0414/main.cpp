@@ -3,7 +3,7 @@
 using namespace std;
 
 void initGraph(int** graph, int n); // 读入一个无向图，以邻接矩阵形式储存
-void drawGraphByMatlab(int** graph, int n, int cnt);
+void drawGraphByMatlab(int** graph, int n, int cnt); // 绘图
 
 int main() {
     int n;
@@ -16,7 +16,23 @@ int main() {
         for(int j = 0; j < n; j++)
             graph[i][j] = 0;
     }
-//    initGraph(graph, n);
+    initGraph(graph, n);
+
+    // 统计边的个数
+    int cnt = 0;
+    for(int i = 0; i < n; i++) {
+        for(int j = i; j < n; j++) {
+            if (graph[i][j] != 0)
+                cnt++;
+        }
+    }
+
+    // 绘图
+    drawGraphByMatlab(graph, n, cnt);
+    return 0;
+}
+
+void initGraph(int** graph, int n) {
     graph[0][1] = 2;
     graph[0][2] = 4;
     graph[0][3] = 22;
@@ -37,35 +53,7 @@ int main() {
     graph[4][5] = 3;
     graph[5][3] = 5;
     graph[5][4] = 3;
-
-    cout << "邻接矩阵为：" << endl;
-    cout << "\t";
-    for(int i = 0; i < n; i++)
-        cout << i + 1 << "\t";
-    cout << endl;
-    for(int i = 0; i < n; i++) {
-        cout << i + 1 << "\t";
-        for(int j = 0; j < n; j++) {
-            cout << graph[i][j] << "\t";
-        }
-        cout << endl;
-    }
-
-    // 统计边的个数
-    int cnt = 0;
-    for(int i = 0; i < n; i++) {
-        for(int j = i; j < n; j++) {
-            if (graph[i][j] != 0)
-                cnt++;
-        }
-    }
-
-    // 绘图
-    drawGraphByMatlab(graph, n, cnt);
-    return 0;
-}
-
-void initGraph(int** graph, int n) {
+    /*
     int rowCnt = 0;
     int colCnt = 0;
     while (rowCnt < n) {
@@ -94,6 +82,7 @@ void initGraph(int** graph, int n) {
             }
         }
     }
+     */
     system("cls");
     cout << "邻接矩阵为：" << endl;
     cout << "\t";

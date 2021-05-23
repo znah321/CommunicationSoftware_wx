@@ -113,8 +113,10 @@ int getIntensity(vector<vector<Complex>> &dataset) {
     // 输出结果
     cout << setprecision(12); // 设置输出精度
     for(int i = 0; i < size; i++)
-        cout << "排名为" << i + 1 << "，" << "小区" << intensity[i][0] << "的强度：" << intensity[i][1] << endl;
+        cout << "排名为" << i + 1 << "，" << "小区" << intensity[i][0] << "(" << dataset[intensity[i][0]][0].id << ")"
+             << "的强度：\t" << intensity[i][1] << endl;
     cout << endl << "强度最大的小区编号为" << intensity[0][0] << "，强度为：" << intensity[0][1] << endl;
+    cout << "对应的文件为：" << dataset[intensity[0][0]][0].id << endl;
     return intensity[0][0];
 }
 
@@ -140,7 +142,8 @@ void correlationAnalyze(vector<Complex> &dataset, vector<vector<Complex>> &pssse
         if (result[i][1] == maxValue)
             maxValueIndex = i;
     }
-    cout << "相关性最大的值为：" << maxValue << "，位置为：" << maxValueIndex << endl;
+    cout << "相关性最大的值为：" << maxValue << "，位置为：" << result[0][maxValueIndex] << endl;
+    cout << "对应的PSS文件为：" << pssset[maxValueIndex][0].id << endl;
 }
 
 // 计算单个滑动相关检测值

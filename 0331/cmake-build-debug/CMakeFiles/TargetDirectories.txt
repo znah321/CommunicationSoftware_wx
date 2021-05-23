@@ -1,3 +1,3 @@
-C:/Users/Orel/Desktop/0331/cmake-build-debug/CMakeFiles/0331.dir
-C:/Users/Orel/Desktop/0331/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Orel/Desktop/0331/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Orel/Desktop/CommunicationSoftware_wx/0331/cmake-build-debug/CMakeFiles/0331.dir
+C:/Users/Orel/Desktop/CommunicationSoftware_wx/0331/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Orel/Desktop/CommunicationSoftware_wx/0331/cmake-build-debug/CMakeFiles/rebuild_cache.dir

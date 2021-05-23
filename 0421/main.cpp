@@ -12,6 +12,7 @@ int main() {
     int vectorCnt; // ¶¥µã¸öÊý
     int *(*G) = initGraph("graph.txt", &vectorCnt);
     Dijkstra(G, vectorCnt);
+    system("pause");
     return 0;
 }
 

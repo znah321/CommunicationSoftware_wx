@@ -64,8 +64,7 @@ void readDataSet(vector<vector<Complex>> &dataset, string type)
         // 打开文件
         string filename = raw_filename + to_string(i) + ".txt";
         ifstream inFile;
-        inFile.open(filename, ios_base::in);
-
+        inFile.open(filename, ios_base::in); // filename为文件名
         // 读取数据
         vector<Complex> temp_vector;
         string re, im;
@@ -148,7 +147,7 @@ void correlationAnalyze(vector<vector<Complex>> &dataset, vector<vector<Complex>
             }
         }
     }
-    cout << "相关性最强的为" << dataset[maxResultRow][0].id << "与PSS" << maxResultColumn + 1 << ".txt" << "，相关性为"
+    cout << "相关性最强的为" << dataset[maxResultRow][0].id << "与PSS" << maxResultColumn << ".txt" << "，相关性为"
          << result[maxResultRow][maxResultColumn] << endl;
 }
 
